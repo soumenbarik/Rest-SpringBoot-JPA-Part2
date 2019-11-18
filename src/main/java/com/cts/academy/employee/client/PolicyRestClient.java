@@ -10,6 +10,6 @@ import com.cts.academy.employee.model.Policy;
 @FeignClient(name = "policyService")
 public interface PolicyRestClient {
 
-	@RequestMapping(method = RequestMethod.GET, value = "/policy/{policyId}")
+	@RequestMapping(method = RequestMethod.GET, value = "v1/policyId/{policyId}")
 	public Policy getPolicyDetils(@PathVariable("policyId") String policyID);
 }

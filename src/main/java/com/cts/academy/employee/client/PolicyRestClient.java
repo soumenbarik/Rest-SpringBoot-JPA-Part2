@@ -1,19 +1,15 @@
 package com.cts.academy.employee.client;
 
-import org.springframework.stereotype.Component;
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.cts.academy.employee.model.Policy;
 
-@Component
-public class PolicyRestClient {
+@FeignClient(name = "policyService")
+public interface PolicyRestClient {
 
-	public Policy fetchPolicyDetails(String policyID) {
-		Policy pol = new Policy();
-		pol.setPolicyNumber(policyID);
-		pol.setContactEmail("contactEmail");
-		pol.setInsuranceStartDate("InsuranceStartDate");
-		pol.setInsurerName("New India Insurance company");
-		pol.setNosOfDependent(4);
-		return pol;
-	}
+	@RequestMapping(method = RequestMethod.GET, value = "v1/policyId/{policyId}")
+	public Policy getPolicyDetils(@PathVariable("policyId") String policyID);
 }

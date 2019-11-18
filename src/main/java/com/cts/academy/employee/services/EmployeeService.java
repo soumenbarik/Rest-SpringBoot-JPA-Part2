@@ -29,7 +29,7 @@ public class EmployeeService {
 	}
 
 	private Policy getPolicyDetails(String policyId) {
-		return policyClient.fetchPolicyDetails(policyId);
+		return policyClient.getPolicyDetils(policyId);
 	}
 
 	public Employee getEmployee(String employeeID) {

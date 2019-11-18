@@ -1,6 +1,6 @@
 spring:
   application:
-    name: licensingservice
+    name: employeeService
   profiles:
     active:
       default

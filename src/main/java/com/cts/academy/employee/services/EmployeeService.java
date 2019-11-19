@@ -34,7 +34,12 @@ public class EmployeeService {
 
 	public Employee getEmployee(String employeeID) {
 
-		return employeeRepo.findByEmployeeId(employeeID);
+		Employee employee =  employeeRepo.findByEmployeeId(employeeID);
+		Policy polDetails = getPolicyDetails(employee.getPolicyId());
+
+		return employee.withEnsurer(polDetails.getInsurerName()).withContactEmail(polDetails.getContactEmail())
+				.withInsuranceStartDate(polDetails.getInsuranceStartDate())
+				.withNosOfDependent(polDetails.getNosOfDependent()).withPolicyID(polDetails.getPolicyNumber());
 	}
 
 	public void saveEmployeeDetails(Employee emp) {
